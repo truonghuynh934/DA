@@ -1,0 +1,294 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+/*** header ****/
+header{
+    margin: 10px 50px;
+}
+
+.img-banner{
+    float: left;
+}
+.title-banner{
+    float: right;
+    color: #5b4d7e;
+    font-size: x-large;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/************* head *************/
+input[type=file]{
+    opacity: 0; 
+    top: 0; 
+    left: 0;
+    height: 100%; 
+    width: 100%; 
+    position: absolute;
+    /* border: 2px solid red; */
+}
+/* frame */
+.head{
+    /* border: 1px solid red; */
+    margin-top: 10px;
+    display: inline-table;
+}
+
+.div-handler, .div-search{
+    display: inline-flex;
+    /* border: 1px solid blue; */
+    /* margin: 10px 40px; */
+}
+
+.div-handler{
+    float: right;
+    margin-left: 100px;
+}
+
+.div-search{
+    float: left;
+    margin-right: 100px;
+}
+/* button handler */
+.input-div-button{
+    height:40px;
+    display: inline-flex;
+    position: relative;
+    margin: 10px;
+    padding: 4px;
+    border-radius: 10px;
+    /* border: 2px solid red; */
+    background-color: #dddddd;
+    cursor: pointer;
+}
+
+.input-div-button:hover{
+    background-color: #fad73f;
+}
+
+.btn{
+    outline: none;
+    border: none;
+    /* border: 2px solid green; */
+    background: none;
+    cursor: pointer;
+    color: #5b4d7e;
+    background-size: 200%;
+    font-weight: bold;
+    font-size: 14px;
+
+    /* button cover div parent*/
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+/* input search*/
+.input-div{
+    position: relative;
+    height: 40px;
+    width: 180px;
+    margin: auto 4px;
+    border-bottom: 2px solid #d9d9d9;
+    /* border: 2px solid blue; */
+}
+
+.title-search{
+    color: #999999;
+    text-align: left;
+    padding-left: 5px;
+    top: 50%;
+    position: absolute;
+    transition: .5s;   
+    /* border: 1px solid orchid; */
+    z-index: -1;
+    font-size: 16px;
+}
+
+.input{
+    width: 100%;
+    padding-top: 18px;
+    padding-left: 5px;
+    /* border: 2px solid pink; */
+    border: none;
+    background: none;
+    outline: none;
+}
+
+/* input text effective */
+.input-div.focus .title-search{
+    top:2px;
+    font-size: 12px;
+}
+
+.input-div.focus:after, .input-div.focus:before{
+    width: 50%;
+}
+.input-div:after{
+    right: 50%;
+}
+.input-div:before{
+    left: 50%;
+}
+.input-div:after, .input-div:before{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #f9a826;
+    transition: .3s;
+}
+
+/* dialog */
+.dialog{
+    display: none;
+}
+iframe{
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* border: 4px solid green; */
+}
+
+/************* middle *************/
+.title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5b4d7e;
+    /* border: 1px solid black; */
+    margin: 10px 0;
+}
+/* table */
+table, th, td{
+    border: 2px solid #5b4d7e;
+    border-collapse: collapse;
+    padding: 4px;
+}
+
+table{
+    /* align table center*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th{
+    color: #5b4d7e;
+    text-transform: uppercase;
+}
+
+tr{
+    height: 60px;
+}
+
+.id-column{
+    width: 60px;
+}
+.name-column{
+    width: 150px;
+}
+.date-of-birth-column{
+    width: 100px;
+}
+.hometown-column{
+    width: 150px;
+}
+.class-column{
+    width: 180px;
+}
+.mode-of-study-column{
+    width: 120px;
+}
+.register-number-column{
+    width: 100px;
+}
+.id-certificate-column{
+    width: 120px;
+}
+.note-column{
+    width: 150px;
+}
+
+.list-student{
+    overflow-x: auto; /* create scroll */
+}
+
+.frame-list-student, .frame-detail-student{
+    display: inline;
+}
+
+.detail-student{
+    background-color: #dddddd;
+}
+
+/************* tail *************/
+.number-student, .pagination{
+    display: inline-block;
+    margin: 10px;
+}
+
+.index-page-current, .total-pages, .total-students{
+    color: #5b4d7e;
+    font-weight: bold;
+}
+
+.index-page-current{
+    height: 34px;
+    width: 60px;
+    padding-left: 5px;
+}
+
+/* pagination */
+a{
+    border-radius: 5px;
+}
+
+.pagination a{
+    color: black;
+    padding: 8px 10px;
+    text-decoration: none;
+    border: 1px solid #5b4d7e;
+}
+
+.pagination a:hover:not(.active){
+    background-color: #dddddd;
+}
+
+.number-page{
+    margin: 0 20px;
+}
+
+a.disabled{
+    background-color: #dddddd;
+}
+/************************** DIALOG **************************/
+
+/*************** RESIZE ***************/
+@media screen and (max-width: 1000px){
+    .div-handler{
+        /* float: right; */
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    
+    .div-search{
+        /* float: left; */  
+        margin-right: 10px;
+        margin-left: 0;
+    }
+}

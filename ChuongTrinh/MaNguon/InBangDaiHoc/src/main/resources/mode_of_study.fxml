@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModeOfStudyController">
+    <top>
+        <Label fx:id="lbTitleModeOfStudy" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="1000.0" style="-fx-background-color: #fad73f;" text="HÌNH THỨC ĐÀO TẠO" textAlignment="CENTER" textFill="#5b4d7e" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets bottom="10.0" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <TableView fx:id="tvModeOfStudy" editable="true" prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="tcDelete" prefWidth="50.0" sortable="false" style="-fx-alignment: center;" text="Xóa" />
+                <TableColumn fx:id="tcId" prefWidth="50.0" sortable="false" style="-fx-alignment: center;" text="STT" />
+                <TableColumn fx:id="tcIdModeOfStudy" sortable="false" text="Mã đào tạo" />
+                <TableColumn fx:id="tcVietnam" prefWidth="200.0" sortable="false" text="Tiếng Việt" />
+                <TableColumn fx:id="tcEnglish" prefWidth="200.0" sortable="false" text="Tiếng Anh" />
+            </columns>
+        </TableView>
+    </center>
+    <right>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Mã đào tạo:">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="50.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfIdModeOfStudy" prefWidth="200.0">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" top="5.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Tiếng Việt:">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="50.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfVietnam" prefWidth="200.0">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" top="5.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Tiếng Anh:">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="50.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfEnglish" prefWidth="200.0">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" top="5.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="btAddNewModeOfStudy" mnemonicParsing="false" onMouseClicked="#addNewModeOfStudy" prefHeight="50.0" prefWidth="150.0" text="Thêm">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btUpdateModeOfStudy" mnemonicParsing="false" onMouseClicked="#updateModeOfStudy" prefHeight="50.0" prefWidth="150.0" text="Cập nhật">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btRefresh" mnemonicParsing="false" onMouseClicked="#refresh" prefHeight="50.0" prefWidth="150.0" text="Làm mới">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+    </right>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+
+</BorderPane>

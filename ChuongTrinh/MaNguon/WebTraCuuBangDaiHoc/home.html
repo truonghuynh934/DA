@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu bằng tốt nghiệp</title>
+    <link rel="icon" href="./img/certificate.png" type="image/icon type">
+    <link rel="stylesheet" type="text/css" href="./css/style_user.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="top">
+        <img src="./img/logo_tentruong.png" height="60px" width="324px" class="img-banner" />
+        <h5 class="title-banner">HỆ THỐNG TRA CỨU BẰNG TỐT NGHIỆP</h5>
+    </header>
+
+    <main class="container">
+        <div class="head">
+            <div class="div-handler">
+                <div class="input-div-button">
+                    <img class="icon" src="./img/login.svg" />
+                    <input type="button" class="btn log-in" title="Đăng nhập" onclick="logIn()" />
+                </div>
+            </div>
+            <div class="div-search">
+                <div class="input-div">
+                    <h5 class="title-search">Số hiệu văn bằng</h5>
+                    <input type="text" class="input id-certificate" />
+                </div>
+                <div class="input-div">
+                    <h5 class="title-search">Họ và tên</h5>
+                    <input type="text" class="input name" />
+                </div>
+                <div class="input-div">
+                    <h5 class="title-search">Ngày sinh (dd/MM/yyyy)</h5>
+                    <input type="text" class="input date-of-birth" />
+                </div>
+                <div class="input-div-button">
+                    <img class="icon" src="./img/search.svg" />
+                    <input type="button" class="btn search" title="Tra cứu" onclick="search()" />
+                </div>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="frame-list-student">
+                <div class="title">
+                    <span>THÔNG TIN BẰNG TỐT NGHIỆP ĐẠI HỌC</span>
+                </div>
+                <div class="list-student">
+                    <table>
+                        <tr class="title-column">
+                            <th class="id-column">STT</th>
+                            <th class="name-column">Họ và tên</th>
+                            <th class="date-of-birth-column">Ngày sinh</th>
+                            <th class="hometown-column"> Nơi sinh</th>
+                            <th class="class-column">Lớp</th>
+                            <th class="mode-of-study-column">Hệ</th>
+                            <th class="register-number-column">Số vào sổ đăng ký</th>
+                            <th class="id-certificate-column">Số hiệu văn bằng</th>
+                            <th class="note-column">Ghi chú</th>
+                        </tr>
+                        <!-- information student here -->
+                    </table>
+                </div>
+            </div>
+
+            <!-- <div class="frame-detail-student">
+                <span class="title">THÔNG TIN CHI TIẾT</span> <br />
+                <div class="detail-student">
+                    ffdfd
+                </div>
+            </div> -->
+        </div>
+
+        <div class="tail">
+            <div class="pagination">
+                <a onclick="goFirstPage()" class="first-page disabled">Trang đầu</a>
+                <a onclick="goPreviousPage()" class="previous-page disabled">&laquo;</a>
+                <span class="number-page">
+                    <span>Page</span>
+                    <input type="number" class="index-page-current" min="1" value="1" 
+                        onchange="changePage();checkValue();" />
+                    <span>of</span>
+                    <span class="total-pages">1</span>
+                </span>
+                <a onclick="goNextPage()" class="next-page disabled">&raquo;</a>
+                <a onclick="goLastPage()" class="last-page disabled">Trang cuối</a>
+            </div>
+            <div class="number-student">
+                <span>Tổng:</span>
+                <span class="total-students">0</span>
+                <span>sinh viên</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Copy right -->
+    </footer>
+
+    <script type="text/javascript" src="./js/user.js"></script>
+    <script type="text/javascript" src="./js/user_paging.js"></script>
+</body>
+
+</html>

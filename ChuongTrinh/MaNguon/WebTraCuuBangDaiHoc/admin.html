@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý bằng tốt nghiệp</title>
+    <link rel="icon" href="./img/certificate.png" type="image/icon type">
+    <link rel="stylesheet" type="text/css" href="./css/style_admin.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script>
+        var username = localStorage.getItem("user");
+        var password = localStorage.getItem("pass");
+        var xmlHttp = new XMLHttpRequest();
+        var resultLogin;
+
+        xmlHttp.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200){
+                resultLogin = this.responseText;
+            }
+        };
+        xmlHttp.open("POST","./be/handle_login.php",false);
+        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlHttp.send("username="+username+"&password="+password);
+
+        // alert("result: " + parseInt(resultLogin) + ". U/P:" +username + ", " + password);
+        if ((username == null && password == null) || parseInt(resultLogin)==0){
+            alert("Bạn chưa đăng nhập! Bạn có muốn đăng nhập không");
+            window.location.replace("./login.html");
+        }else{
+            // alert("Đăng nhập thành công");
+        }
+    </script>
+</head>
+
+<body onload="changePage();totalPages();totalStudents();">
+    <header class="top">
+        <img src="./img/logo_tentruong.png" height="60px" width="324px" class="img-banner" />
+        <h5 class="title-banner">HỆ THỐNG TRA CỨU BẰNG TỐT NGHIỆP</h5>
+    </header>
+
+    <main class="container">
+        <div class="head">
+            <div class="div-handler">
+                <div class="input-div-button">
+                    <img class="icon" src="./img/add.svg" />
+                    <input type="file" class="btn" id="add-data" title="Thêm dữ liệu" oninput="addData()" />
+                </div>
+                <div class="input-div-button">
+                    <img class="icon" src="./img/excel-file.svg" />
+                    <input type="file" class="btn" id="replace-data" title="Cập nhật dữ liệu mới" oninput="replaceData()" />
+                </div>
+                <div class="input-div-button">
+                    <img class="icon" src="./img/delete.svg" />
+                    <input type="button" class="btn" id="delete-data" title="Xóa dữ liệu" onclick="deleteRows()" />
+                </div>
+                <div class="input-div-button">
+                    <img class="icon" src="./img/logout.svg" />
+                    <input type="button" class="btn log-out" title="Đăng xuất" onclick="logOut()" />
+                </div>
+            </div>
+            <div class="div-search">
+                <div class="input-div">
+                    <h5 class="title-search">Số hiệu văn bằng</h5>
+                    <input type="text" class="input id-certificate" />
+                </div>
+                <div class="input-div">
+                    <h5 class="title-search">Họ và tên</h5>
+                    <input type="text" class="input name" />
+                </div>
+                <div class="input-div">
+                    <h5 class="title-search">Ngày sinh (dd/MM/yyyy)</h5>
+                    <input type="text" class="input date-of-birth" />
+                </div>
+                <div class="input-div-button">
+                    <img class="icon" src="./img/search.svg" />
+                    <input type="button" class="btn search" title="Tra cứu" onclick="search()" />
+                </div>
+            </div>
+            <div class="dialog">
+                <iframe src=""></iframe>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="frame-list-student">
+                <div class="title">
+                    <span>LỊCH SỬ IN BẰNG</span>
+                </div>
+                <div class="list-student">
+                    <table>
+                        <tr class="title-column">
+                            <th>Chọn</th>
+                            <th class="id-column">STT</th>
+                            <th class="name-column">Họ và tên</th>
+                            <th class="date-of-birth-column">Ngày sinh</th>
+                            <th class="hometown-column"> Nơi sinh</th>
+                            <th class="class-column">Lớp</th>
+                            <th class="mode-of-study-column">Hệ</th>
+                            <th class="register-number-column">Số vào sổ đăng ký</th>
+                            <th class="id-certificate-column">Số hiệu văn bằng</th>
+                            <th class="note-column">Ghi chú</th>
+                        </tr>
+                        <!-- information student here -->
+                    </table>
+                </div>
+            </div>
+
+            <!-- <div class="frame-detail-student">
+                <span class="title">THÔNG TIN CHI TIẾT</span> <br />
+                <div class="detail-student">
+                    ffdfd
+                </div>
+            </div> -->
+        </div>
+
+        <div class="tail">
+            <div class="pagination">
+                <a onclick="goFirstPage()" class="first-page disabled">Trang đầu</a>
+                <a onclick="goPreviousPage()" class="previous-page disabled">&laquo;</a>
+                <span class="number-page">
+                    <span>Page</span>
+                    <input type="number" class="index-page-current" min="1" value="1" 
+                        onchange="changePage();checkValue();" />
+                    <span>of</span>
+                    <span class="total-pages">999999999</span>
+                </span>
+                <a onclick="goNextPage()" class="next-page disabled">&raquo;</a>
+                <a onclick="goLastPage()" class="last-page disabled">Trang cuối</a>
+            </div>
+            <div class="number-student">
+                <span>Tổng:</span>
+                <span class="total-students">999999999</span>
+                <span>sinh viên</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Copy right -->
+    </footer>
+
+    <script type="text/javascript" src="./js/admin.js"></script>
+    <script type="text/javascript" src="./js/admin_paging.js"></script>
+</body>
+
+</html>

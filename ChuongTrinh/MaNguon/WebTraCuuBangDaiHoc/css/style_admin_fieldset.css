@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.head, .middle, .tail{
+    margin: 10px;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5b4d7e;
+}
+
+.container{
+    align-items: center;
+    text-align: center;
+}
+
+/************* head *************/
+.div-search, .div-handler{
+    display: inline-table;
+    margin: 10px;
+    /* border: 1px solid blue; */
+}
+
+.handler{
+    padding: 8.5px;
+}
+
+.btn{
+    display: inline-block;
+    border-radius: 25px;
+    padding: 15px;
+    outline: none;
+    border: none;
+    background-color: #f9a826;
+    cursor: pointer;
+    color: #ffffff;
+    background-size: 200%;
+    transition: 0.5s;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn:hover{
+    color: #5b4d7e;
+}
+
+legend{
+    text-align: left;
+    color: #ddd;
+}
+
+fieldset{
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 15px;
+    color: #555555;
+    /* border: 2px solid green; */
+    top: 0;
+    left: 0;
+    padding-left: 4px;
+    padding-top: 10px;
+}
+
+.input-div > h5{
+    position: absolute;
+    color: #999999;
+    font-size: 15px;
+    /* border: 1px solid #999; */
+    left: 5px;
+    top: 50%;
+    transition: .5s;
+}
+
+.input-div{
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    width: 180px;
+    margin: 5px;
+    border-bottom: 2px solid #d9d9d9;
+    /* border: 4px solid blue; */
+}
+.input-div-button{
+    top: -18px;
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    margin-top: 20px;
+    /* border: 4px solid red; */
+}
+
+/* input text effective */
+.input-div.focus h5{
+    top:2px;
+    font-size: 13px;
+}
+
+.input-div.focus:after, .input-div.focus:before{
+    width: 50%;
+}
+.input-div:after{
+    right: 50%;
+}
+.input-div:before{
+    left: 50%;
+}
+.input-div:after, .input-div:before{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #f9a826;
+    transition: .3s;
+}
+
+/************* middle *************/
+/* table */
+table, th, td{
+    border: 2px solid #5b4d7e;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+table{
+    /* align table center*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-student{
+    overflow-x: auto; /* create scroll */
+}
+
+th{
+    color: #5b4d7e;
+    text-transform: uppercase;
+}
+
+.frame-list-student, .frame-detail-student{
+    display: inline;
+}
+
+.detail-student{
+    background-color: #ddd;
+}
+
+/************* tail *************/
+.number-student, .pagination{
+    display: inline-block;
+    margin: 10px;
+}
+
+.index-page-current, .total-number-page, .total-number-student{
+    color: #5b4d7e;
+    font-weight: bold;
+}
+
+.index-page-current{
+    height: 34px;
+    width: 40px;
+    padding-left: 5px;
+}
+
+/* pagination */
+.pagination a{
+    color: black;
+    padding: 8px 10px;
+    text-decoration: none;
+    border: 1px solid #5b4d7e;
+}
+
+.pagination a:hover:not(.active){
+    background-color: #ddd;
+}
+
+.number-page{
+    margin: 0 20px;
+}

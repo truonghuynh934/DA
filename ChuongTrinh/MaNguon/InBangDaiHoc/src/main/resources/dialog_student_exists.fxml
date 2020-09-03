@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DialogStudentExistsController">
+    <top>
+        <VBox><children>
+        <Label fx:id="lbTitleDialog" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="1000.0" style="-fx-background-color: #fad73f;" text="CẬP NHẬT THÔNG TIN" textAlignment="CENTER" textFill="#5b4d7e" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" />
+            </BorderPane.margin>
+        </Label>
+            <Label alignment="CENTER" prefWidth="1000.0" text="(Sinh viên này đã in bằng trước đó, hãy thêm thông tin ở phần ghi chú nếu bạn muốn in lại)" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label alignment="CENTER" prefWidth="1000.0" text="(Chọn bỏ qua để hủy in bằng cho sinh viên này)" textAlignment="CENTER" textFill="RED">
+                <font>
+                    <Font name="System Italic" size="12.0" />
+                </font></Label>
+        </children></VBox>
+    </top>
+    <center>
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" prefWidth="300.0">
+                    <children>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Mã sinh viên:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfIdStudent" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Họ và tên:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfName" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Ngày sinh:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfDateOfBirth" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Giới tính:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfSex" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Quê quán:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfHometown" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="ĐTBC:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfGpa" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Xếp hạng:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfRank" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefWidth="300.0">
+                    <children>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Ngày cấp bằng:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfLicenseDate" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Năm tốt nghiệp:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfGraduationYear" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Số vào sổ cấp bằng:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfRegisterNumber" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Ngành đào tạo:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfMajor" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Hình thức đào tạo:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfModeOfStudy" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Danh hiệu:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfTitle" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Khóa:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfClass" disable="true" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label prefWidth="120.0" text="Ghi chú:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                                <TextField fx:id="tfNote" />
+                            </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </center>
+   <bottom>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btUpdateStudent" mnemonicParsing="false" onMouseClicked="#updateStudent" prefHeight="50.0" prefWidth="100.0" text="Cập nhật" />
+            <Button fx:id="btIgnore" mnemonicParsing="false" onMouseClicked="#ignoreStudent" prefHeight="50.0" prefWidth="100.0" text="Bỏ qua">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>

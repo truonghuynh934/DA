@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .modal {
+            /* display: none; */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            border: 1px solid #888888;
+            border-radius: 5px;
+            width: 90%;
+            /* margin: auto;
+            margin-top: 20px; */
+            margin: 40px auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+            /* border: 1px solid red; */
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 2px 10px;
+            margin: 2px;
+            border-radius: 10px;
+            background-color: #f9a826;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #5b4d7e;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* modal components */
+        .modal-header {
+            padding: 2px 16px;
+            border-bottom: 2px solid #d9d9d9;
+            height: 42px;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            text-align: right;
+            padding: 5px 16px 10px 16px;
+        }
+
+        .modal-title {
+            display: block;
+            margin: 15px 0;
+        }
+
+        /* table */
+        table,
+        th,
+        td {
+            border: 2px solid #d9d9d9;
+            border-collapse: collapse;
+            padding: 4px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .list-student {
+            /* border: 10px solid #d9d9d9; */
+            border-radius: 10px;
+            padding: 8px 0;
+            /* create scroll */
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+
+        th {
+            color: green;
+            /* text-transform: uppercase; */
+            font-weight: bold;
+        }
+
+        tr{
+            height: 40px;
+        }
+
+        .id-column{
+            width: 5%;
+        }
+        .name-column{
+            width: 20%;
+        }
+        .date-of-birth-column{
+            width: 10%;
+        }
+        .hometown-column{
+            width: 10%;
+        }
+        .class-column{
+            width: 15%;
+        }
+        .mode-of-study-column{
+            width: 10%;
+        }
+        .register-number-column{
+            width: 10%;
+        }
+        .id-certificate-column{
+            width: 10%;
+        }
+        .note-column{
+            width: 10%;
+        }
+
+        /* button */
+        .btn {
+            display: inline-block;
+            outline: none;
+            border: none;
+            /* border: 2px solid green; */
+            background: none;
+            cursor: pointer;
+            color: #5b4d7e;
+            background-size: 200%;
+            font-weight: bold;
+            font-size: 14px;
+
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #dddddd;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #f9a826;
+        }
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+</head>
+
+<body onload="upLoad()">
+
+    <!-- The Modal Dialog -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <span class="close" onclick="closeDialog()">&times;</span>
+                <span class="modal-title">Xem trước</span>
+            </div>
+
+            <div class="modal-body">
+                <div class="list-student">
+                    <table id="table-students">
+                        <tr class="title-column">
+                            <th class="id-column">STT</th>
+                            <th class="name-column">Họ và tên</th>
+                            <th class="date-of-birth-column">Ngày sinh</th>
+                            <th class="hometown-column"> Nơi sinh</th>
+                            <th class="class-column">Lớp</th>
+                            <th class="mode-of-study-column">Hệ</th>
+                            <th class="register-number-column">Số vào sổ đăng ký</th>
+                            <th class="id-certificate-column">Số hiệu văn bằng</th>
+                            <th class="note-column">Ghi chú</th>
+                        </tr>
+                        <!-- information student here -->
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="button" value="Đồng ý" class="btn agree" onclick="confirmAdd()" />
+                <input type="button" value="Hủy bỏ" class="btn cancel" onclick="closeDialog()" />
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        var listStudents = new Array();
+        // Get the iframe
+        var iframes = parent.document.getElementsByTagName("iframe");
+
+        // When the user clicks on <span> (x), close the modal
+        function closeDialog() {
+            if (iframes.length > 0) {
+                iframes[0].parentNode.style.display = "none";
+            }
+        }
+
+        function confirmAdd() {
+            var htmltest = "";
+            var resultAdd="";
+            var studentsAddFail="";
+
+            /**** add data to database ****/
+            var xmlhttp = new XMLHttpRequest();
+
+            // console.info(listStudents);
+            // alert(listStudents[2]+", " +listStudents[listStudents.length-1]);
+            var studentPassed = "";
+            for(var i=0;i<listStudents.length;i=i+8){
+                studentPassed = listStudents[i] + ";" + listStudents[i+1] + ";"
+                    + listStudents[i+2] + ";" + listStudents[i+3] + ";"
+                    + listStudents[i+4] + ";" + listStudents[i+5] + ";"
+                    + listStudents[i+6] + ";" + listStudents[i+7];
+
+                // fix: value contain character '&' (affect url sent)
+                studentPassed = studentPassed.replace(/&/g,"and");
+
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // console.info("Success: " + this.responseText);
+                        htmltest = htmltest + this.responseText + "<br /> \n";
+                        resultAdd = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "./be/add_data.php?student_passed=" + studentPassed, false);
+                xmlhttp.send();
+
+                // check add student success????
+                if (parseInt(resultAdd) != 1){
+                    studentsAddFail = studentsAddFail + studentPassed + "\n";
+                }
+            }
+
+            if (studentsAddFail != ""){
+                alert("Không thể thêm những sinh viên: \n" + studentsAddFail);
+            }
+            // parent.document.getElementsByClassName("list-student")[0].innerHTML =htmltest;
+
+            // close diaglog after add
+            closeDialog();
+
+            // refresh page parent
+            parent.window.location.reload();
+
+            console.log("confirmed Add!");
+        }
+
+        function upLoad() {
+            //Reference the FileUpload element.
+            var fileUpload = parent.document.getElementById("add-data");
+
+            console.info("Upload method: " + fileUpload.value);
+
+            //Validate whether File is valid Excel file.
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+            if (regex.test(fileUpload.value.toLowerCase())) {
+                if (typeof (FileReader) != "undefined") {
+                    var reader = new FileReader();
+
+                    //For Browsers other than IE.
+                    if (reader.readAsBinaryString) {
+                        reader.onload = function (e) {
+                            processExcel(e.target.result);
+                        };
+                        reader.readAsBinaryString(fileUpload.files[0]);
+                    } else {
+                        //For IE Browser.
+                        reader.onload = function (e) {
+                            var data = "";
+                            var bytes = new Uint8Array(e.target.result);
+                            for (var i = 0; i < bytes.byteLength; i++) {
+                                data += String.fromCharCode(bytes[i]);
+                            }
+                            processExcel(data);
+                        };
+                        reader.readAsArrayBuffer(fileUpload.files[0]);
+                    }
+                } else {
+                    alert("This browser does not support HTML5.");
+                }
+            } else {
+                alert("Vui lòng chọn đúng file excel hợp lệ (*.xls, *.xlsx)");
+                iframes[0].parentNode.style.display = "none";
+            }
+        }
+
+        function processExcel(data) {
+            //Read the Excel File data.
+            var workbook = XLSX.read(data, {
+                type: 'binary'
+            });
+
+            //Fetch the name of First Sheet.
+            var firstSheet = workbook.SheetNames[0];
+
+            //Read all rows from First Sheet into an JSON array.
+            var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
+
+            //Create a HTML Table element.
+            var table = document.getElementById("table-students");
+
+            //Add the header row.
+            // var row = table.insertRow(-1);
+
+            //Add the data rows from Excel file.
+            for (var i = 0; i < excelRows.length; i++) {
+                //Add the data row.
+                var row = table.insertRow(-1);
+
+                //Add the data cells.
+                var cell = row.insertCell(-1);
+                cell.innerHTML = i + 1;
+                cell.style.color = "green";
+                cell.style.textAlign = "center";
+                cell.style.fontWeight = "bold";
+
+                cell = row.insertCell(-1);
+                var nameStudent = "";
+                if (excelRows[i]["Họ"] != null) {
+                    nameStudent = excelRows[i]["Họ"];
+                    nameStudent = nameStudent.trim();
+                }
+                if (excelRows[i]["Tên"] != null) {
+                    nameStudent = nameStudent + " " + excelRows[i]["Tên"];
+                }
+                cell.innerHTML = nameStudent;
+                listStudents.push(nameStudent);
+
+                cell = row.insertCell(-1);
+                if (excelRows[i]["NTNS"] == null) {
+                    cell.innerHTML = "";
+                    listStudents.push("");
+                } else {
+                    cell.innerHTML = excelRows[i]["NTNS"];
+                    listStudents.push(excelRows[i]["NTNS"]);
+                }
+
+                cell = row.insertCell(-1);
+                if (excelRows[i]["Nơi sinh"] == null) {
+                    cell.innerHTML = "";
+                    listStudents.push("");
+                } else {
+                    cell.innerHTML = excelRows[i]["Nơi sinh"];
+                    listStudents.push(excelRows[i]["Nơi sinh"]);
+                }
+            
+                cell = row.insertCell(-1);
+                if (excelRows[i]["Lớp"] == null) {
+                    cell.innerHTML = "";
+                    listStudents.push("");
+                } else {
+                    cell.innerHTML = excelRows[i]["Lớp"];
+                    listStudents.push(excelRows[i]["Lớp"]);
+                }
+
+                cell = row.insertCell(-1);
+                if (excelRows[i]["Hệ"] == null) {
+                    cell.innerHTML = "";
+                    listStudents.push("");
+                } else {
+                    cell.innerHTML = excelRows[i]["Hệ"];
+                    listStudents.push(excelRows[i]["Hệ"]);
+                }
+
+                cell = row.insertCell(-1);
+                if (excelRows[i]["Số vào sổ"] == null) {
+                    cell.innerHTML = "";
+                    listStudents.push("");
+                } else {
+                    cell.innerHTML = excelRows[i]["Số vào sổ"];
+                    listStudents.push(excelRows[i]["Số vào sổ"]);
+                }
+
+                cell = row.insertCell(-1);
+                if (excelRows[i]["Số hiệu bằng"] == null) {
+                    cell.innerHTML = "";
+                    listStudents.push("");
+                } else {
+                    cell.innerHTML = excelRows[i]["Số hiệu bằng"];
+                    listStudents.push(excelRows[i]["Số hiệu bằng"]);
+                }
+
+                cell = row.insertCell(-1);
+                if (excelRows[i]["Ghi chú"] == null) {
+                    cell.innerHTML = "";
+                    listStudents.push("");
+                } else {
+                    cell.innerHTML = excelRows[i]["Ghi chú"];
+                    listStudents.push(excelRows[i]["Ghi chú"]);
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

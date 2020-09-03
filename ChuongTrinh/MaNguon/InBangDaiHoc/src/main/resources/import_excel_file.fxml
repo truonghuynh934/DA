@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImportExcelFileController">
+    <top>
+        <Label fx:id="lbTitleImportExcel" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="1000.0" style="-fx-background-color: #fad73f;" text="DỮ LIỆU TẬP TIN EXCEL" textAlignment="CENTER" textFill="#5b4d7e" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets bottom="10.0" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <TableView fx:id="tvInformationExcel" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="tcIdExcel" prefWidth="50.0" sortable="false" style="-fx-alignment: center;" text="STT" />
+                <TableColumn fx:id="tcIdStudentExcel" prefWidth="100.0" sortable="false" text="Mã sinh viên" />
+                <TableColumn fx:id="tcNameExcel" prefWidth="160.0" sortable="false" text="Họ và tên" />
+                <TableColumn fx:id="tcSexExcel" prefWidth="70.0" sortable="false" text="Giới tính" />
+                <TableColumn fx:id="tcDateOfBirthExcel" prefWidth="100.0" sortable="false" text="Ngày sinh" />
+                <TableColumn fx:id="tcHometownExcel" prefWidth="120.0" sortable="false" text="Nơi sinh" />
+                <TableColumn fx:id="tcGPAExcel" prefWidth="60.0" sortable="false" text="ĐTBC" />
+                <TableColumn fx:id="tcRankExcel" prefWidth="120.0" sortable="false" text="Xếp loại" />
+            </columns>
+        </TableView>
+    </center>
+   <right>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btImportExcel" mnemonicParsing="false" onMouseClicked="#importExcel" prefHeight="50.0" prefWidth="150.0" text="Import Excel">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+             <Button fx:id="btRefresh" mnemonicParsing="false" onMouseClicked="#refresh" prefHeight="50.0" prefWidth="150.0" text="Làm mới">
+                 <VBox.margin>
+                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                 </VBox.margin>
+             </Button>
+         </children>
+      </VBox>
+   </right>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+
+</BorderPane>

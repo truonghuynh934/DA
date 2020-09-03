@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            /* display: none; */
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            border: 1px solid #888888;
+            border-radius: 5px;
+            width: 50%;
+            margin: auto;
+            /* padding: 0; */
+            margin-top: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 2px 10px;
+            margin: 2px;
+            border-radius: 10px;
+            background-color: #f9a826;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #5b4d7e;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* modal components */
+        .modal-header {
+            padding: 2px 16px;
+            border-bottom: 2px solid #d9d9d9;
+            height: 42px;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            text-align: right;
+            padding: 5px 16px 10px 16px;
+            /* border: 1px solid green; */
+        }
+
+        /* others */
+        .modal-title {
+            display: block;
+            margin: 15px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            outline: none;
+            border: none;
+            /* border: 2px solid green; */
+            background: none;
+            cursor: pointer;
+            color: #5b4d7e;
+            background-size: 200%;
+            font-weight: bold;
+            font-size: 14px;
+
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #dddddd;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #f9a826;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The Modal Dialog -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <span class="close" onclick="closeDialog()">&times;</span>
+                <span class="modal-title">Cập nhật dữ liệu mới</span>
+            </div>
+
+            <div class="modal-body">
+                <p>Bạn có thực sự muốn xóa hết dữ liệu cũ?</p>
+            </div>
+
+            <div class="modal-footer">
+                <input type="button" value="Đồng ý" class="btn agree" onclick="replaceData()" />
+                <input type="button" value="Hủy bỏ" class="btn cancel" onclick="closeDialog()" />
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Get the iframe
+        var iframes = parent.document.getElementsByTagName("iframe");
+
+        // When the user clicks on <span> (x), close the modal
+        function closeDialog() {
+            if (iframes.length > 0) {
+                iframes[0].parentNode.style.display = "none";
+            }
+            // console.info(frames.length);
+        }
+
+        function replaceData() {
+            var listStudents = JSON.parse(sessionStorage.getItem("listStudents"));
+
+            /******* backup data ******/
+            var xmlhttpBackup = new XMLHttpRequest();
+            xmlhttpBackup.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    // alert("Success: " + this.responseText);
+                }else{
+                    // alert("Fail: " + this.responseText);
+                }
+            };
+            xmlhttpBackup.open("GET","../be/backup_data.php",false);
+            xmlhttpBackup.send();
+
+
+            /**** delete all old data before add ****/
+            var xmlhttpDelete = new XMLHttpRequest();
+            xmlhttpDelete.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    // console.info("delete successs: " + this.responseText);
+                }else{
+                    // console.info("delete fail");
+                }
+            };
+            xmlhttpDelete.open("GET","./be/delete_database.php",false);
+            xmlhttpDelete.send();
+        
+            // console.info("type: " + typeof(listStudents) +", " + listStudents);
+            // alert(listStudents[2]+", " +listStudents[listStudents.length-1]);
+            /**** add data to database ****/
+            var htmltest="";
+            var resultAdd="";
+            var studentsAddFail="";
+            var xmlhttpAdd = new XMLHttpRequest();
+
+            var studentPassed = "";
+            for(var i=0;i<listStudents.length;i=i+8){
+                studentPassed = listStudents[i] + ";" + listStudents[i+1] + ";"
+                    + listStudents[i+2] + ";" + listStudents[i+3] + ";"
+                    + listStudents[i+4] + ";" + listStudents[i+5] + ";"
+                    + listStudents[i+6] + ";" + listStudents[i+7];
+
+                    
+                // fix: value contain character '&' (affect url sent)
+                studentPassed = studentPassed.replace(/&/g,"and");
+
+                xmlhttpAdd.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // console.info("Success: " + this.responseText);
+                        // htmltest = htmltest + this.responseText + "<br /> \n";
+                        resultAdd = this.responseText;
+                    }
+                };
+                xmlhttpAdd.open("GET", "./be/add_data.php?student_passed=" + studentPassed, false);
+                xmlhttpAdd.send();
+
+                // check add student success????
+                if (parseInt(resultAdd) != 1){
+                    studentsAddFail = studentsAddFail + studentPassed + "\n";
+                }
+            }
+            /////////////////////////////////////////
+            // split every student, once time only send one student
+            // var listStudentSplited = listStudents.toString().split(",");
+            // alert("type: " + typeof(listStudent.toString()) + ", chiều dài: " + listStudentSplited.length +", listStudentSplited[2]: " + listStudentSplited[2]);
+
+            // for(var i=0;i<listStudentSplited.length;i=i+8){
+            //     studentPassed = listStudentSplited[i] + ";" + listStudentSplited[i+1] + ";"
+            //         + listStudentSplited[i+2] + ";" + listStudentSplited[i+3] + ";"
+            //         + listStudentSplited[i+4] + ";" + listStudentSplited[i+5] + ";"
+            //         + listStudentSplited[i+6] + ";" + listStudentSplited[i+7];
+
+            //     xmlhttpAdd.onreadystatechange = function () {
+            //         if (this.readyState == 4 && this.status == 200) {
+            //             resultAdd = this.responseText;
+            //             // htmltest = htmltest + this.responseText + "<br /> \n";
+            //         }
+            //     };
+            //     xmlhttpAdd.open("GET", "./be/add_data.php?student_passed=" + studentPassed, false);
+            //     xmlhttpAdd.send();
+
+            //     // check add student success????
+            //     if (parseInt(resultAdd) != 1){
+            //         studentsAddFail = studentsAddFail + studentPassed + "\n";
+            //     }
+            // }
+            ///////////////////////////////////////////////
+
+            // parent.document.getElementsByClassName("list-student")[0].innerHTML =htmltest;
+
+            if (studentsAddFail != ""){
+                alert("Không thể thêm những sinh viên: \n" + studentsAddFail);
+            }
+
+            // close diaglog after add
+            closeDialog();
+
+            // refresh page parent
+            parent.window.location.reload();
+            
+            console.log("written!");
+        }
+
+    </script>
+
+</body>
+
+</html>

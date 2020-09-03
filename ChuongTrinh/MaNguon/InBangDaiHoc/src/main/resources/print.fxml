@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrintController">
+    <top>
+        <Label fx:id="lbTitlePrint" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="1000.0" style="-fx-background-color: #fad73f;" text="IN BẰNG" textAlignment="CENTER" textFill="#5b4d7e" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" />
+         </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <TableView fx:id="tvInformationPrint" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="tcSelect" prefWidth="50.0" sortable="false" style="-fx-alignment: center;" text="Chọn" />
+                <TableColumn fx:id="tcId" prefWidth="50.0" sortable="false" style="-fx-alignment: center;" text="STT" />
+                <TableColumn fx:id="tcName" prefWidth="75.0" sortable="false" text="Họ và tên" />
+                <TableColumn fx:id="tcDateOfBirth" prefWidth="75.0" sortable="false" text="Ngày sinh" />
+                <TableColumn fx:id="tcSex" prefWidth="75.0" sortable="false" text="Giới tính" />
+                <TableColumn fx:id="tcHometown" prefWidth="75.0" sortable="false" text="Nơi sinh" />
+                <TableColumn fx:id="tcRank" prefWidth="100.0" sortable="false" text="Xếp loại tốt nghiệp" />
+                <TableColumn fx:id="tcLicenseDate" prefWidth="75.0" sortable="false" text="Ngày cấp" />
+                <TableColumn fx:id="tcGraduationYear" prefWidth="75.0" sortable="false" text="Năm tốt nghiệp" />
+                <TableColumn fx:id="tcRegisterNumber" prefWidth="75.0" sortable="false" text="Số vào sổ cấp Bằng" />
+                <TableColumn fx:id="tcMajor" prefWidth="75.0" sortable="false" text="Ngành học" />
+                <TableColumn fx:id="tcModeOfStudy" prefWidth="75.0" sortable="false" text="Hình thức đào tạo" />
+                <TableColumn fx:id="tcTitle" prefWidth="75.0" sortable="false" text="Danh hiệu" />
+                <TableColumn fx:id="tcClass" prefWidth="50.0" sortable="false" text="Khóa" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <TitledPane animated="false" collapsible="false" text="Phôi bằng" textFill="#5b4d7e">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="400">
+                            <children>
+                                <VBox prefWidth="400.0">
+                                    <children>
+                                        <RadioButton fx:id="rbCertificateBachelor" mnemonicParsing="false" selected="true" text="In trên Phôi bằng CỬ NHÂN">
+                                            <VBox.margin>
+                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="tgCertificate" />
+                                 </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton fx:id="rbCertificateEngineer" mnemonicParsing="false" text="In trên Phôi bằng KỸ SƯ" toggleGroup="$tgCertificate">
+                                            <VBox.margin>
+                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </RadioButton>
+                                    </children>
+                                </VBox>
+                            </children></AnchorPane>
+                    </content>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+                </TitledPane>
+                <TitledPane animated="false" collapsible="false" text="Kiểu Font chữ" textFill="#5b4d7e">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="400.0">
+                            <children>
+                                <HBox prefWidth="400">
+                                    <children>
+                                        <VBox prefWidth="200.0">
+                                            <children>
+                                                <RadioButton fx:id="rbStyle1" mnemonicParsing="false" selected="true" text="Kiểu 1">
+                                                    <VBox.margin>
+                                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="tgFont" />
+                                       </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="rbStyle2" mnemonicParsing="false" text="Kiểu 2" toggleGroup="$tgFont">
+                                                    <VBox.margin>
+                                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </RadioButton>
+                                            </children></VBox>
+                                        <VBox prefWidth="200.0">
+                                            <children>
+                                                <RadioButton fx:id="rbStyle3" mnemonicParsing="false" text="Kiểu 3" toggleGroup="$tgFont">
+                                                    <VBox.margin>
+                                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </RadioButton>
+                                                <RadioButton fx:id="rbStyle4" mnemonicParsing="false" text="Kiểu 4" toggleGroup="$tgFont">
+                                                    <VBox.margin>
+                                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </RadioButton>
+                                            </children></VBox>
+                                    </children>
+                                </HBox>
+                            </children></AnchorPane>
+                    </content>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+                </TitledPane>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="btDelete" mnemonicParsing="false" onMouseClicked="#deleteStudent" prefHeight="50.0" prefWidth="150.0" text="Xóa">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="btPrintPreview" mnemonicParsing="false" onMouseClicked="#printPreview" prefHeight="50.0" prefWidth="150.0" text="Xem trước">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="btPrint" mnemonicParsing="false" onMouseClicked="#printCertificate" prefHeight="50.0" prefWidth="150.0" text="In đã chọn">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+        </HBox>
+    </bottom>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</BorderPane>

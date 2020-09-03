@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Hệ thống">
+            <items>
+                <MenuItem fx:id="home" mnemonicParsing="false" onAction="#changeLayout" text="Trang chủ" />
+                <MenuItem fx:id="major" mnemonicParsing="false" onAction="#changeLayout" text="Ngành đào tạo" />
+                <MenuItem fx:id="mode_of_study" mnemonicParsing="false" onAction="#changeLayout" text="Hình thức đào tạo" />
+                <MenuItem fx:id="rank" mnemonicParsing="false" onAction="#changeLayout" text="Xếp loại tốt nghiệp" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#closeApp" text="Thoát" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Dữ liệu">
+            <items>
+                <MenuItem fx:id="manual_data_entry" mnemonicParsing="false" onAction="#changeLayout" text="Nhập dữ liệu thủ công" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="import_excel_file" mnemonicParsing="false" onAction="#changeLayout" text="Nhập dữ liệu từ tập tin Excel" />
+                <MenuItem fx:id="assign_information" mnemonicParsing="false" onAction="#changeLayout" text="Gán thông tin in bằng" />
+
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="In bằng">
+                <items>
+                    <MenuItem fx:id="print" mnemonicParsing="false" onAction="#changeLayout" text="In" />
+                    <MenuItem fx:id="search_certificate" mnemonicParsing="false" onAction="#changeLayout" text="Tìm kiếm bằng đã in" />
+                </items>
+            </Menu>
+<!--          <Menu mnemonicParsing="false" text="Trợ giúp">-->
+<!--            <items>-->
+<!--              <MenuItem fx:id="about" mnemonicParsing="false" onAction="#changeLayout" text="Giới thiệu" />-->
+<!--            </items>-->
+<!--          </Menu>-->
+
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <BorderPane fx:id="bpMainView" BorderPane.alignment="CENTER">
+         <center>
+            <fx:include source="/home.fxml" />
+         </center>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </BorderPane>
+   </center>
+</BorderPane>
