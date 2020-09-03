@@ -8,6 +8,7 @@
 
 
 **** II. Cách cài đặt chương trình:
+
 *1. Trang web tra cứu bằng tốt nghiệp đại học:
 - Bước 1: 
 	Download và cài đặt chương trình XAMPP trên máy tính cá nhân.
@@ -28,17 +29,17 @@
 - Bước 2: 
 	Mở thư mục InBangDaiHoc (đường dẫn: \ChuongTrinh\MaNguon\InBangDaiHoc) trong IntelliJ IDEA, và run.
 
-- Giải thích ý nghĩa một số tập tin (nếu có) trong thư mục InBangDaiHoc:
-+ history_student_printed.xlsx: chứa thông tin tất cả bằng tốt nghiệp đại học đã in trước đó trên ứng dụng.
-+ list_students_export.xlsx: chứa thông tin một số bằng tốt nghiệp đại học đã in trên ứng dụng, được trích xuất từ ứng dụng.
-+ major.json: chứa thông tin các ngành được đào tạo tại trường.
-+ mode_of_study.json: chứa thông tin các hình thức đào tạo (hệ) tại trường.
-+ rank.json: chứa thông tin các hạng mục xếp loại tại trường.
-+ register_number.txt: chứa số vào sổ cấp bằng đến hiện tại.
-+ certificate.pdf: chứa thông tin in lên phôi bằng tốt nghiệp đại học.
-+ phoibang-printpreview.pdf: chứa thông tin in lên phôi bằng tốt nghiệp đại học ở dạng xem trước.
-+ phoibang_cunhan.pdf: phôi bằng cử nhân bằng tốt nghiệp đại học.
-+ phoibang_kysu.pdf: phôi bằng kỹ sư bằng tốt nghiệp đại học.
+Giải thích ý nghĩa một số tập tin (nếu có) trong thư mục InBangDaiHoc:
+- history_student_printed.xlsx: chứa thông tin tất cả bằng tốt nghiệp đại học đã in trước đó trên ứng dụng.
+- list_students_export.xlsx: chứa thông tin một số bằng tốt nghiệp đại học đã in trên ứng dụng, được trích xuất từ ứng dụng.
+- major.json: chứa thông tin các ngành được đào tạo tại trường.
+- mode_of_study.json: chứa thông tin các hình thức đào tạo (hệ) tại trường.
+- rank.json: chứa thông tin các hạng mục xếp loại tại trường.
+- register_number.txt: chứa số vào sổ cấp bằng đến hiện tại.
+- certificate.pdf: chứa thông tin in lên phôi bằng tốt nghiệp đại học.
+- phoibang-printpreview.pdf: chứa thông tin in lên phôi bằng tốt nghiệp đại học ở dạng xem trước.
+- phoibang_cunhan.pdf: phôi bằng cử nhân bằng tốt nghiệp đại học.
+- phoibang_kysu.pdf: phôi bằng kỹ sư bằng tốt nghiệp đại học.
 
 Lưu ý: riêng 2 tập tin phoibang_cunhan.pdf và phoibang_kysu.pdf, bạn đọc cần liên hệ với tác giả để nhận được 2 tập tin này.
 
